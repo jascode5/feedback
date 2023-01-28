@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Responsive Registration Form</title>
+        <meta name="viewport" content="width=device-width,
+      initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="form-title">Feed-Back</h1>
+            <form action="POST" name='Google-sheet'>
+                <div class="main-user-info">
+                    <div class="user-input-box">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="Name" placeholder="Enter Full Name" />
+                    </div>
+                    <div class="user-input-box">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" name="Number" placeholder="Enter Phone Number" />
+                    </div>
+                    <div class="user-input-box">
+                        <label for="Number">Ratings</label>
+                        <input type="number" id="rating" name="Rating" value="5" placeholder="Enter your rating (1 to 5)" />
+                    </div>
+                </div>
+                <div class="form-submit-btn">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwBGmOn1sjcCYYwoIkirDiEy5V8egc5i17y4Y2CNTLqihcU2ekM4ijcqkWYIBYL11tm1w/exec'
+            const form = document.forms['Google-sheet']
+
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                    .catch(error => console.error('Error!', error.message))
+            })
+        </script>
+    </body>
+
+</html>
